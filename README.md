@@ -12,3 +12,11 @@ Continual learning (CL) is under-explored in the video domain. The few existing 
 - [Dataset](#dataset)
 - [Usage](#usage)
 - [Citation](#citation)
+
+## Prerequisites
+
+It is essential to install all the dependencies and libraries needed to run the project. To this end, you need to run this line: 
+
+```
+conda env create -f environment.yml
+```
