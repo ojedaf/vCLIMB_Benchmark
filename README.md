@@ -29,7 +29,7 @@ We provide the metadata for each Video Continual Learning (CL) setup proposed in
 
 The configuration file must be created or modified according to the provided examples, the code path, your particular requirements, and the selected setup.
 ```
-python train_few_shot_TSM_CNAPS.py -conf './conf/conf_base_tsm_cnaps_epicKitchens_textEnco_DynaMod_5shot_pretrained_resnet50.yaml'
+python main_icarl_conLoss.py -conf './conf/conf_ucf101_cil_tsn_iCaRL_2020M_8F_SelfSup.yaml
 ```
 
 ## Citation
