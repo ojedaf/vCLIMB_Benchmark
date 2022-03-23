@@ -27,7 +27,7 @@ We provide the metadata for each Video Continual Learning (CL) setup proposed in
 
 ## Usage
 
-The configuration file must be created or modified according to the path of the code and your particular requirements. 
+The configuration file must be created or modified according to the provided examples, the code path, your particular requirements, and the selected setup.
 ```
 python train_few_shot_TSM_CNAPS.py -conf './conf/conf_base_tsm_cnaps_epicKitchens_textEnco_DynaMod_5shot_pretrained_resnet50.yaml'
 ```
