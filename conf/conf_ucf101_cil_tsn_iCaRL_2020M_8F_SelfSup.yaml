@@ -1,7 +1,7 @@
 dataset:
   name: 'cilucf101'
-  path_data: '/home/villaaf/ContinualLearningProject/baselines/CIL_baseline_TSN/data/UCF101_data.pkl'
-  path_frames: '/ibex/scratch/villaaf/datasets/UCF-101_frames'
+  path_data: './data/UCF101_data.pkl'
+  path_frames: './datasets/UCF-101_frames'
 model:
   num_segments: 8
   modality: 'RGB'
@@ -35,7 +35,7 @@ checkpoints:
   train_mode: True
   eval_freq: 2
   print_freq: 2
-  path_model: '/home/villaaf/ContinualLearningProject/baselines/CIL_baseline_TSN/checkpoints/{}_TSN_UCF101_iCaRL_2020M_8F_SelfSup.pkl'
+  path_model: './checkpoints/{}_TSN_UCF101_iCaRL_2020M_8F_SelfSup.pkl'
 comet:
   name: 'TSN_CIL_iCaRL_MEMSIZE_2020M_8F_10_tasks_ibex_05_SelfSup'
   api_key: 'FbkM3YZFUZNIIUQ4EDJc8wsBv'
