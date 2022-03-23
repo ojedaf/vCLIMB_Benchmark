@@ -24,3 +24,29 @@ conda env create -f environment.yml
 ## Dataset
 
 We provide the metadata for each Video Continual Learning (CL) setup proposed in this benchmark. This metadata contains the data subsets corresponding to the set of tasks of each CL setup.  However, you have to download the video datasets required by the proposed CL setups.  
+
+## Usage
+
+The configuration file must be created or modified according to the path of the code and your particular requirements. 
+```
+python train_few_shot_TSM_CNAPS.py -conf './conf/conf_base_tsm_cnaps_epicKitchens_textEnco_DynaMod_5shot_pretrained_resnet50.yaml'
+```
+
+## Citation
+
+If you find this repository useful for your research, please consider citing our paper:
+
+```
+@inproceedings{vCLIMB_villa,
+  author    = {Villa, Andr{\'{e}}s and
+               Alhamoud, Kumail and
+               León Alcázar, Juan and
+               Caba Heilbron, Fabian and
+               Escorcia, Victor and
+               Ghanem, Bernard},
+  title     = {{vCLIMB:} A Novel Video Class Incremental Learning Benchmark},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2022},
+  month={June}
+}
+```
