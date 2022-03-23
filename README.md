@@ -20,3 +20,7 @@ It is essential to install all the dependencies and libraries needed to run the 
 ```
 conda env create -f environment.yml
 ```
+
+## Dataset
+
+We provide the metadata for each Video Continual Learning (CL) setup proposed in this benchmark. This metadata contains the data subsets corresponding to the set of tasks of each CL setup.  However, you have to download the video datasets required by the proposed CL setups.  
