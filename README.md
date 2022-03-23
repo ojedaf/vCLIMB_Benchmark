@@ -28,6 +28,8 @@ We provide the metadata for each Video Continual Learning (CL) setup proposed in
 ## Usage
 
 The configuration file must be created or modified according to the provided examples, the code path, your particular requirements, and the selected setup.
+
+- Run iCaRL with Temporal Consistency Regularization. 
 ```
 python main_icarl_conLoss.py -conf './conf/conf_ucf101_cil_tsn_iCaRL_2020M_8F_SelfSup.yaml
 ```
