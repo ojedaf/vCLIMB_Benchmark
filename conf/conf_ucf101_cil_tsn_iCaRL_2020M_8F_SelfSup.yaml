@@ -1,0 +1,43 @@
+dataset:
+  name: 'cilucf101'
+  path_data: '/home/villaaf/ContinualLearningProject/baselines/CIL_baseline_TSN/data/UCF101_data.pkl'
+  path_frames: '/ibex/scratch/villaaf/datasets/UCF-101_frames'
+model:
+  num_segments: 8
+  modality: 'RGB'
+  arch: 'resnet34'
+  consensus_type: 'avg'
+  dropout: 0.5
+  img_feature_dim: 256
+  no_partialbn: True
+  pretrain: 'imagenet'
+  shift: False
+  shift_div: 8
+  shift_place: 'blockres'
+  fc_lr5: False
+  temporal_pool: False
+  non_local: False
+  test_crops: 1
+  lr: 0.001
+  momentum: 0.9
+  weight_decay: 0.0001
+  lr_steps: [10.0, 20.0]
+  lr_type: 'step'
+  epochs: 50
+  clip_gradient: 20.0
+  batch_size: 50
+  num_workers: 4
+  num_frame_to_save: 8
+  adv_lambda: 0.5
+memory:
+  memory_size: 2020
+checkpoints:
+  train_mode: True
+  eval_freq: 2
+  print_freq: 2
+  path_model: '/home/villaaf/ContinualLearningProject/baselines/CIL_baseline_TSN/checkpoints/{}_TSN_UCF101_iCaRL_2020M_8F_SelfSup.pkl'
+comet:
+  name: 'TSN_CIL_iCaRL_MEMSIZE_2020M_8F_10_tasks_ibex_05_SelfSup'
+  api_key: 'FbkM3YZFUZNIIUQ4EDJc8wsBv'
+  project_name: 'CIL_KAUST'
+  workspace: 'afvilla'
