@@ -1,1 +1,1 @@
-# vCLIMB_Benchmark
+# vCLIMB: A Novel Video Class Incremental Learning Benchmark
