@@ -34,6 +34,8 @@ The configuration file must be created or modified according to the provided exa
 python main_icarl_conLoss.py -conf './conf/conf_ucf101_cil_tsn_iCaRL_2020M_8F_SelfSup.yaml
 ```
 
+- For iCaRL without Temporal Consistency Regularization, put ```adv_lambda = 0``` in the conf file
+
 ## Citation
 
 If you find this repository useful for your research, please consider citing our paper:
