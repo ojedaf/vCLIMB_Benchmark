@@ -1,0 +1,42 @@
+reg_lambda: 3000
+dataset:
+  name: 'cilucf101'
+  path_data: 'data/Kinetics400_data_tasks_10.pkl'
+  path_frames: '/home/villaaf/datasets/Kinetics/kinetics_frames'
+model:
+  num_segments: 8
+  modality: 'RGB'
+  arch: 'resnet34'
+  consensus_type: 'avg'
+  dropout: 0.5
+  img_feature_dim: 256
+  no_partialbn: True
+  pretrain: 'imagenet'
+  shift: False
+  shift_div: 8
+  shift_place: 'blockres'
+  fc_lr5: False
+  temporal_pool: False
+  non_local: False
+  test_crops: 1
+  lr: 0.001
+  momentum: 0.9
+  weight_decay: 0.0001
+  lr_steps: [10.0, 20.0]
+  lr_type: 'step'
+  epochs: 30
+  clip_gradient: 20.0
+  batch_size: 64
+  num_workers: 4
+memory:
+  memory_size: 0
+checkpoints:
+  train_mode: True
+  eval_freq: 2
+  print_freq: 2
+  path_model: 'checkpoints/{}_TSN_kinetics_regularized3000_{}.pkl'
+comet:
+  name: 'TSN_CIL_{}_KINETICS_20_tasks_datacenter'
+  api_key: 'FbkM3YZFUZNIIUQ4EDJc8wsBv'
+  project_name: 'CIL_KAUST'
+  workspace: 'afvilla'
