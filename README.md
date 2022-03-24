@@ -36,6 +36,11 @@ python main_icarl_conLoss.py -conf './conf/conf_ucf101_cil_tsn_iCaRL_2020M_8F_Se
 
 - For iCaRL without Temporal Consistency Regularization, make ```adv_lambda: 0``` in the conf file
 - To run BiC use ```main_bic_v2.py```
+- Run EWC
+```
+python main_regularized.py -conf './conf/conf_kinetics_cil_tsn_baseline_EWC_Regularized_Rlambda_3000.yaml'
+```
+
 
 ## Citation
 
