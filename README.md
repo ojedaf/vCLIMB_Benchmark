@@ -41,8 +41,9 @@ python main_icarl_conLoss.py -conf './conf/conf_ucf101_cil_tsn_iCaRL_2020M_8F_Se
 python main_regularized.py -conf './conf/conf_kinetics_cil_tsn_baseline_EWC_Regularized_Rlambda_3000.yaml'
 ```
 - Run MAS
+```
 python main_regularized.py -conf './conf/conf_kinetics_cil_tsn_baseline_MAS_Regularized_Rlambda_300K.yaml'
-
+```
 
 ## Citation
 
