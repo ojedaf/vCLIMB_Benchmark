@@ -36,7 +36,7 @@ checkpoints:
   print_freq: 2
   path_model: 'checkpoints/{}_TSN_kinetics_regularized3000_{}.pkl'
 comet:
-  name: 'TSN_CIL_{}_KINETICS_20_tasks_datacenter'
-  api_key: 'FbkM3YZFUZNIIUQ4EDJc8wsBv'
-  project_name: 'CIL_KAUST'
-  workspace: 'afvilla'
+  name: 'NAME_OF_EXP'
+  api_key: 'YOUR_API_KEY'
+  project_name: 'YOUR_PROJECT_NAME'
+  workspace: 'YOUR_WORKSPACE'
