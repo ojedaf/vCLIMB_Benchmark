@@ -31,6 +31,8 @@ model:
   adv_lambda: 0.5
 memory:
   memory_size: 2020
+  type_mem: 'icarl'
+  path_memory: './checkpoints/Memory_TSN_UCF101_iCaRL_2020M_8F_10_tasks_mem.pkl'
 checkpoints:
   train_mode: True
   eval_freq: 2
