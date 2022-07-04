@@ -23,9 +23,13 @@ import torch
 #     loss_CR*=cr_lambda
 #     return (adv_lambda * loss_aug) + ((1-adv_lambda) * loss) + loss_CR
 
+# Temporal Consistency loss
+# criterion - Classification Loss (Cross Entropy Loss)
+# outputs - model outputs for the original video clips
+# outputs_aug - model outputs for the temporally downsampled versions
+# labels - Ground truths
+# adv_lambda - The relevance for the original video clips classification loss. (1 - adv_lambda) is the relevance for the classification loss of the temporally downsampled videos.
 def get_robust_loss(criterion, outputs, outputs_aug, labels, adv_lambda=0.5, cr_lambda=0, l_outputs=None, l_outputs_aug=None):
-#     outputs = model(videos)
-#     outputs_aug = model(videos_aug)
     loss = criterion(outputs, labels)
     loss_aug = criterion(outputs_aug, labels)
     print('loss: ',loss.item())
