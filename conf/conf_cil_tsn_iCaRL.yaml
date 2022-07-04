@@ -2,6 +2,10 @@ dataset:
   name: 'DATASET_NAME' # UCF101: cilucf101, Kinetics: cilkinetics, ActivityNet: activityNet
   path_data: 'PATH_DATA_CIL_SCENARIOS'
   path_frames: 'PATH_VIDEO_DATA' # Path of video frames
+  is_activityNet: It is True If the dataset is ActivityNet and False in other cases.
+  train_per_noise: It is 0 for the Trimmed Version of ActivityNet and 1 for the Untrimmed Version (Training Set)
+  val_per_noise: It is 0 for the Trimmed Version of ActivityNet and 1 for the Untrimmed Version (Validation Set)
+  co_threshold: 0
 model: 
   num_segments: 8 # Num of segment for the tsn sampling strategy
   modality: 'RGB'
