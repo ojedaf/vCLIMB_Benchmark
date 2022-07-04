@@ -40,6 +40,17 @@ We provide the metadata for each Video Continual Learning (CL) setup proposed in
 #### ActivityNet
 - [ActivityNet - 10 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/raw/main/data/ActivityNet_data_10tasks.pkl)
 - [ActivityNet - 20 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/raw/main/data/ActivityNet_data_20tasks.pkl)
+##### Configuration for Trimmed Version:
+- is_activityNet: True
+- train_per_noise: 0
+- val_per_noise: 0
+- co_threshold: 0
+##### Configuration for Untrimmed Version:
+- is_activityNet: True
+- train_per_noise: 1
+- val_per_noise: 1
+- co_threshold: 0
+
 
 ## Usage
 
