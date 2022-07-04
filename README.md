@@ -1,6 +1,7 @@
 # vCLIMB: A Novel Video Class Incremental Learning Benchmark
 
 vCLIMB will be added to Avalanche SOON.
+<span style="color: green"> Some green text </span>
 
 [[Blog]](https://vclimb.netlify.app/) [[Paper]](https://arxiv.org/abs/2201.09381)
 
