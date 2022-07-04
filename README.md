@@ -28,7 +28,7 @@ conda env create -f environment.yml
 We provide the metadata for each Video Continual Learning (CL) setup proposed in this benchmark. This metadata contains the data subsets corresponding to the set of tasks of each CL setup.  However, you have to download the video datasets required by the proposed CL setups and extract the frames of videos. 
 
 ### Data
-- ![UCF101 - 10 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/blob/main/data/UCF101_data.pkl)
+- [UCF101 - 10 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/raw/main/data/UCF101_data.pkl)
 - ![UCF101 - 20 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/blob/main/data/UCF101_data.pkl)
 - ![Kinetics400 - 10 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/blob/main/data/UCF101_data.pkl)
 - ![Kinetics400 - 10 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/blob/main/data/UCF101_data.pkl)
