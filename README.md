@@ -29,11 +29,11 @@ We provide the metadata for each Video Continual Learning (CL) setup proposed in
 
 ### Data
 - [UCF101 - 10 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/raw/main/data/UCF101_data.pkl)
-- ![UCF101 - 20 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/blob/main/data/UCF101_data.pkl)
-- ![Kinetics400 - 10 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/blob/main/data/UCF101_data.pkl)
-- ![Kinetics400 - 10 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/blob/main/data/UCF101_data.pkl)
-- ![ActivityNet - 10 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/blob/main/data/UCF101_data.pkl)
-- ![ActivityNet - 20 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/blob/main/data/UCF101_data.pkl)
+- [UCF101 - 20 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/raw/main/data/UCF101_data_20tasks.pkl)
+- [Kinetics400 - 10 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/raw/main/data/Kinetics400_data_tasks_10.pkl)
+- [Kinetics400 - 10 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/raw/main/data/Kinetics400_data_tasks_20.pkl)
+- [ActivityNet - 10 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/raw/main/data/ActivityNet_data_10tasks.pkl)
+- [ActivityNet - 20 Tasks](https://github.com/ojedaf/vCLIMB_Benchmark/raw/main/data/ActivityNet_data_20tasks.pkl)
 
 ## Usage
 
