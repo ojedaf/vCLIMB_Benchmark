@@ -31,7 +31,7 @@ The configuration file must be created or modified according to the provided exa
 
 - Run iCaRL with Temporal Consistency Regularization. 
 ```
-python main_icarl_conLoss.py -conf './conf/conf_cil_tsn_iCaRL.yaml
+python main_icarl_conLoss.py -conf './conf/conf_cil_tsn_iCaRL.yaml'
 ```
 
 - For iCaRL without Temporal Consistency Regularization, make ```adv_lambda: 0``` in the conf file
