@@ -1,0 +1,45 @@
+dataset:
+  name: 'DATASET_NAME' # UCF101: cilucf101, Kinetics: cilkinetics, ActivityNet: activityNet
+  path_data: 'PATH_DATA_CIL_SCENARIOS'
+  path_frames: 'PATH_VIDEO_DATA' # Path of video frames
+model: 
+  num_segments: 8 # Num of segment for the tsn sampling strategy
+  modality: 'RGB'
+  arch: 'resnet34' # Backbone architecture. For instances, resnet34, resnet50
+  consensus_type: 'avg'
+  dropout: 0.5
+  img_feature_dim: 256
+  no_partialbn: True
+  pretrain: 'imagenet'
+  shift: False # False for TSN, True for TSM
+  shift_div: 8
+  shift_place: 'blockres'
+  fc_lr5: False
+  temporal_pool: False
+  non_local: False
+  test_crops: 1
+  lr: 0.001 # Set the learning rate
+  momentum: 0.9 # Set momentum for the optimizer
+  weight_decay: 0.0001
+  lr_steps: [10.0, 20.0]
+  lr_type: 'step'
+  epochs: 2 # Num epoch
+  clip_gradient: 20.0
+  batch_size: 10 # Batch size
+  num_workers: 4 # Num workers
+  num_frame_to_save: 'ALL' # Num frames per video to save into the Memory. It is an int value (4, 8, 16), or 'ALL' if we want to save all frames per video. 
+  adv_lambda: 0 # Consistency regularization factor. 0 to do not use the Consistency regularization. 0.5 to use it with the same relevance level of the standard loss.
+memory:
+  memory_size: 2020 # Memory size
+  type_mem: 'random' # Sampling strategy for the memory. 'icarl' for icarl strategy or 'random' 
+  path_memory: 'PATH_TO_SAVE_THE_MEMORY.pkl' 
+checkpoints:
+  train_mode: True 
+  eval_freq: 1 # Num epoch to evaluate the model. 
+  print_freq: 1 # Num epoch to print the metrics. 
+  path_model: 'PATH_TO_SAVE_THE_MODEL.pkl'
+comet:
+  name: 'EXP_NAME_COMET'
+  api_key: 'API_KEY_COMET'
+  project_name: 'PROJECT_NAME_COMET'
+  workspace: 'WORKSPACE_COMET'
