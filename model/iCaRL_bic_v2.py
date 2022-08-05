@@ -80,7 +80,7 @@ class iCaRL_BIC(nn.Module):
         # self.compute_means = True
         self.exemplar_means = []
         self.memory = {}
-        self.list_val_acc_ii = []
+        self.list_val_acc_ii = {'val': [], 'test': []}
         
         self.adv_lambda = conf_model['adv_lambda']
         print('adv_lambda: ',self.adv_lambda)
@@ -239,7 +239,7 @@ class iCaRL_BIC(nn.Module):
         print(output)
         return total_acc.avg
         
-    def final_validate(self, val_cilDatasetList, current_task_id, experiment):
+    def final_validate(self, val_cilDatasetList, current_task_id, experiment, type_val = 'val'):
         top1 = AverageMeter()
         total_acc = AverageMeter()
         val_loaders_list = val_cilDatasetList.get_valSet_by_taskNum(current_task_id+1)
@@ -266,9 +266,9 @@ class iCaRL_BIC(nn.Module):
 
                 experiment.log_metric("Acc_task_{}".format(n_task+1), top1.avg, step=current_task_id+1)
                 if n_task == current_task_id:
-                    self.list_val_acc_ii.append(top1.avg)
+                    self.list_val_acc_ii[type_val].append(top1.avg)
                 elif n_task < current_task_id:
-                    forgetting = self.list_val_acc_ii[n_task] - top1.avg
+                    forgetting = self.list_val_acc_ii[type_val][n_task] - top1.avg
                     BWF.update(forgetting, num_classes)
                 total_acc.update(top1.avg, num_classes)
                 top1.reset()
