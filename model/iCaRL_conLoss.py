@@ -68,7 +68,7 @@ class iCaRL(nn.Module):
         self.compute_means = True
         self.exemplar_means = []
         self.memory = {}
-        self.list_val_acc_ii = []
+        self.list_val_acc_ii = {'val': [], 'test': []}
         self.adv_lambda = conf_model['adv_lambda']
         print('adv_lambda: ',self.adv_lambda)
         self.type_sampling = conf_model['type_sampling']
