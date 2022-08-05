@@ -20,9 +20,8 @@ def parse_conf(conf, new_dict = {}):
 
 def main():
     
-    global dict_conf, device, experiment, data, list_val_acc_ii, memory_size, type_sampling, is_activityNet, path_memory
+    global dict_conf, device, experiment, data, memory_size, type_sampling, is_activityNet, path_memory
     
-    list_val_acc_ii = []
     parser = argparse.ArgumentParser(description="iCaRL BIC TSN Baseline")
     parser.add_argument("-conf","--conf_path", default = './conf/conf_ucf101_icarl_tsn.yaml')
     args = parser.parse_args()
