@@ -187,12 +187,12 @@ def train_loop(model, optimizer, train_cilDatasetList, val_cilDatasetList, test_
         print('n_known_classes: ',model.n_known)
         
         with experiment.validate():
-            total_acc_val = model.final_validate(val_cilDatasetList, j, experiment)
+            total_acc_val = model.final_validate(val_cilDatasetList, j, experiment, 'val')
             print('Val total Accuracy: %d %%' % total_acc_val)
         
         if not is_activityNet:
             with experiment.test():
-                total_acc_test = model.final_validate(test_cilDatasetList, j, experiment)
+                total_acc_test = model.final_validate(test_cilDatasetList, j, experiment, 'test')
                 print('Test total Accuracy: %d %%' % total_acc_test)
         
         if num_next_classes != None:
