@@ -13,12 +13,7 @@ import torch.backends.cudnn as cudnn
 import torch.optim
 from torch.nn.utils import clip_grad_norm_
 
-# from utils.dataset import CILSetTask
 from utils.icarl_dataset_frames_selfsup_v2 import CILSetTask
-# from utils.regularizations import *
-# from utils.Regularized_Training import *
-# from utils.MAS import *
-# from utils.EWC import *
 from model.temporalShiftModule.ops.models import TSN
 from model.temporalShiftModule.ops.transforms import *
 from model.temporalShiftModule.opts import parser
@@ -61,24 +56,9 @@ def main():
     
     global device, experiment, data, list_val_acc_ii, type_regularization, is_activityNet
     
-    list_val_acc_ii = []
-#     parser = argparse.ArgumentParser(description="CIL TSN Rehearsal Baseline")
-#     parser.add_argument("-conf","--conf_path", default = './conf/conf_ucf101_cil_tsn_baseline.yaml')
-#     args = parser.parse_args()
-#     conf_file = open(args.conf_path, 'r')
-#     print("Conf file dir: ",conf_file)
-#     dict_conf = yaml.load(conf_file)
+    list_val_acc_ii = {'val': [], 'test': []}
 
     conf_model = dict_conf['model']
-    
-#     type_regularization = conf_model['type_regularization']
-#     print('Type Regularization:', type_regularization)
-#     if type_regularization == 'EWC':
-#         # EWC Method
-#         from utils.EWC import get_regularized_loss, on_task_update
-#     else:
-#         # MAS Method
-#         from utils.MAS import get_regularized_loss, on_task_update
         
     num_segments = conf_model['num_segments']
     modality = conf_model['modality']
@@ -143,10 +123,6 @@ def main():
     optimizer = torch.optim.Adagrad(policies,
                                 conf_model['lr'],
                                 weight_decay=conf_model['weight_decay'])
-#    optimizer = torch.optim.SGD(policies,
-#                                conf_model['lr'],
-#                                momentum=conf_model['momentum'],
-#                                weight_decay=conf_model['weight_decay'])
     
     path_frames = dict_conf['dataset']['path_frames']
     memory_size = dict_conf['memory']['memory_size']
@@ -177,23 +153,6 @@ def main():
         ToTorchFormatTensor(div=(arch not in ['BNInception', 'InceptionV3'])),
         normalize,
     ])
-    
-#     train_cilDatasetList = CILSetTask(data['train'], path_frames, memory_size, batch_size, shuffle=True, 
-#                                       num_workers=num_workers, drop_last=True, pin_memory=True, 
-#                                       num_segments=num_segments, new_length=data_length, modality=modality, 
-#                                       transform=train_transforms, dense_sample=False, train_enable = True)
-    
-#     val_cilDatasetList = CILSetTask(data['val'], path_frames, memory_size, batch_size, shuffle=False, 
-#                                     num_workers=num_workers, pin_memory=True, 
-#                                     num_segments=num_segments, new_length=data_length, modality=modality, 
-#                                     transform=val_transforms, random_shift=False, dense_sample=False, 
-#                                     train_enable = False)
-                                    
-#     test_cilDatasetList = CILSetTask(data['test'], path_frames, memory_size, batch_size, shuffle=False, 
-#                                     num_workers=num_workers, pin_memory=True, 
-#                                     num_segments=num_segments, new_length=data_length, modality=modality, 
-#                                     transform=val_transforms, random_shift=False, dense_sample=False, 
-#                                     train_enable = False)
 
     train_per_noise = dict_conf['dataset']['train_per_noise'] if 'train_per_noise' in dict_conf['dataset'] else 0
     val_per_noise = dict_conf['dataset']['val_per_noise'] if 'val_per_noise' in dict_conf['dataset'] else 0
@@ -255,12 +214,11 @@ def train_loop(current_task, current_epoch, model, optimizer, train_cilDatasetLi
     path_model = dict_conf['checkpoints']['path_model']
     for j in range(current_task, num_tasks):
         criterion = nn.CrossEntropyLoss().to(device)
-#         train_loader_i, num_next_classes = next(iter_trainDataloader)
         _, _, train_loader_i, _, num_next_classes = next(iter_trainDataloader)
         best_prec1 = validate(val_cilDatasetList, model, criterion, j)
         print('Best init Acc: {} Task: {}'.format(best_prec1, j+1))
         for epoch in range(current_epoch, epochs):
-#             adjust_learning_rate(optimizer, epoch, lr_type, lr_steps)
+
             # train for one epoch
             train(train_loader_i, model, criterion, optimizer, epoch, j)
 
@@ -282,12 +240,12 @@ def train_loop(current_task, current_epoch, model, optimizer, train_cilDatasetLi
   
         model = load_best_checkpoint(model, path_model, j)
         with experiment.validate():
-            total_acc_val = final_validate(val_cilDatasetList, model, j)
+            total_acc_val = final_validate(val_cilDatasetList, model, j, 'val')
             print('Val total Accuracy: %d %%' % total_acc_val)
         
         if not is_activityNet:
             with experiment.test():
-                total_acc_test = final_validate(test_cilDatasetList, model, j)
+                total_acc_test = final_validate(test_cilDatasetList, model, j, 'test')
                 print('Test total Accuracy: %d %%' % total_acc_test)
         
         
@@ -447,7 +405,7 @@ def validate(val_cilDatasetList, model, criterion, current_task_id):
     print(output)
     return total_acc.avg
     
-def final_validate(val_cilDatasetList, model, current_task_id):
+def final_validate(val_cilDatasetList, model, current_task_id, type_val = 'val'):
     top1 = AverageMeter()
     total_acc = AverageMeter()
     val_loaders_list = val_cilDatasetList.get_valSet_by_taskNum(current_task_id+1)
@@ -472,9 +430,9 @@ def final_validate(val_cilDatasetList, model, current_task_id):
 
             experiment.log_metric("Acc_task_{}".format(n_task+1), top1.avg, step=current_task_id+1)
             if n_task == current_task_id:
-                list_val_acc_ii.append(top1.avg)
+                list_val_acc_ii[type_val].append(top1.avg)
             elif n_task < current_task_id:
-                forgetting = list_val_acc_ii[n_task] - top1.avg
+                forgetting = list_val_acc_ii[type_val][n_task] - top1.avg
                 BWF.update(forgetting, num_classes)
             total_acc.update(top1.avg, num_classes)
             top1.reset()
