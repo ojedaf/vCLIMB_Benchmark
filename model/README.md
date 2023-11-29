@@ -6,7 +6,8 @@ This repository is about Class Video Incremental Learning on UCF-101 and Kinetic
 In the dynamic realm of machine learning, mastering incremental learning while retaining previously acquired knowledge is a pivotal challenge. This project, focuses on the domain of Video Class Incremental Learning. Here, models evolve incrementally to accommodate new video classes without suffering catastrophic forgetting. To address this, the project employs replay-based methods and knowledge distillation techniques, breaking new ground by surpassing benchmarks established by the vCLIMB paper.
 
 ## Methods and Techniques:
-Entropy-Based Sampling: The project harnesses replay-based methods and to enhance the efficiency of replay, the project introduces entropy-based sampling. This innovative technique selects exemplars from previous classes based on their uncertainty or complexity, ensuring that the model continues to learn from challenging examples while incorporating new classes.
+## Entropy-Based Sampling:
+The project harnesses replay-based methods and to enhance the efficiency of replay, the project introduces entropy-based sampling. This innovative technique selects exemplars from previous classes based on their uncertainty or complexity, ensuring that the model continues to learn from challenging examples while incorporating new classes.
 
 ## Knowledge Distillation: 
 Knowledge distillation is applied to transfer knowledge from the prior model to the updated one, preserving insights about older classes during adaptation to new ones.
@@ -26,5 +27,5 @@ Graphs of vclimb [https://arxiv.org/pdf/2201.09381.pdf](url) and vclimb+entropy 
 ![ucf](https://github.com/shubo4/Video-Incremental-Learning/assets/90241581/ae39c217-5b5a-403d-aa0f-e62368c08287)
 
 ## Kinetics comparison graph:
-vclimb and vclimb+entropy+Semantic Drift compensatio
-[kinetics](https://github.com/shubo4/Video-Incremental-Learning/assets/90241581/20f90d86-91fa-42c2-ae2b-b66d54e5dab4)
+vclimb and vclimb+entropy+Semantic Drift compensation
+![kinetics](https://github.com/shubo4/Video-Incremental-Learning/assets/90241581/20f90d86-91fa-42c2-ae2b-b66d54e5dab4)
