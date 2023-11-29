@@ -24,3 +24,7 @@ The project's results outperform the vCLIMB benchmarks. On the UCF dataset, our 
 ## UCF-101 comparison graph:
 Graphs of vclimb [https://arxiv.org/pdf/2201.09381.pdf](url) and vclimb+entropy sampling and vclimb+entropy+Semantic Drift compensation
 ![ucf](https://github.com/shubo4/Video-Incremental-Learning/assets/90241581/ae39c217-5b5a-403d-aa0f-e62368c08287)
+
+## Kinetics comparison graph:
+vclimb and vclimb+entropy+Semantic Drift compensatio
+[kinetics](https://github.com/shubo4/Video-Incremental-Learning/assets/90241581/20f90d86-91fa-42c2-ae2b-b66d54e5dab4)
