@@ -1,5 +1,5 @@
 from comet_ml import Experiment
-from model.iCaRL_conLoss_sdc import iCaRL
+from model.icarl_conLoss_sdc import iCaRL
 import torch
 from model.temporalShiftModule.ops.transforms import *
 from utils.icarl_dataset_frames_selfsup_v2 import CILSetTask
@@ -206,7 +206,7 @@ def train_loop(model, optimizer, train_cilDatasetList, val_cilDatasetList, test_
         classes, data, train_loader_i, len_data, num_next_classes = next(iter_trainDataloader)
 
         if j>0:
-           old_embs = model.get_emb(val_cilDatasetList)  #return z_i(t-1) and mu(t-1)
+           old_embs = model.get_emb(val_cilDatasetList)  #return z_i(t-1):[(t-1)th models embedding on memory buffer ] and mu(t-1):[mean of embeddings of classes stored whose examples are stored in the buffer]
 
         # Train the model on the current task
         model.train(train_loader_i, len_data, optimizer, num_epochs, experiment, j, val_cilDatasetList)
@@ -228,15 +228,7 @@ def train_loop(model, optimizer, train_cilDatasetList, val_cilDatasetList, test_
             m = 'ALL'
         
         # Add the new instances to the memory and fit previous instances per class to the new size.
-        h = model.add_samples_final(val_cilDatasetList, data, m) #returns dictionary of features
-        #h = model.add_samples_to_mem(val_cilDatasetList, data, m)
-        #if j==9:
-         #   with open('feature_selected.pickle', 'wb') as handle:
-          #      pickle.dump(h, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
-            #with open('iCarl_mem.pickle', 'wb') as handle:
-             #   pickle.dump(h[0], handle, protocol=pickle.HIGHEST_PROTOCOL)
-
+        model.add_samples_final(val_cilDatasetList, data, m)
 
         # Asign the memory to the set of CIL tasks (CILSetTask).
         train_cilDatasetList.memory = model.memory
