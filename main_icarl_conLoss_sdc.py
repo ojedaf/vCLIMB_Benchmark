@@ -28,7 +28,7 @@ def main():
     global dict_conf, device, experiment, data, memory_size, type_sampling, is_activityNet, path_memory
     
     parser = argparse.ArgumentParser(description="iCaRL TSN Baseline")
-    parser.add_argument("-conf","--conf_path", default = '/DATA1/shubham/vCLIMB_Benchmark/conf/conf_ucf101_cil_tsn_iCaRL_2020M_8F_SelfSup.yaml')
+    parser.add_argument("-conf","--conf_path", default = 'vCLIMB_Benchmark/conf/conf_ucf101_cil_tsn_iCaRL_2020M_8F_SelfSup.yaml')
     args = parser.parse_args()
     conf_file = open(args.conf_path, 'r')
     print("Conf file dir: ",conf_file)
